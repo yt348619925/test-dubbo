@@ -19,9 +19,9 @@ public class TbItemCatDubboServiceImpl implements TbItemCatDubboService {
     private TbItemCatMapper tbItemCatMapper;
 
     /**
-      * 功能描述: 
-      * @param
-      * @return 
+      * 功能描述: 根据cid查询类目信息
+      * @param cid
+      * @return TbItemCat
       * @auther: yt
       * @date: 2019/1/23 13:43
       */
