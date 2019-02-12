@@ -2,6 +2,8 @@ package com.mygeno.test.service;
 
 import com.mygeno.test.pojo.TbItemCat;
 
+import java.util.List;
+
 /**
  * @Auther: yt
  * @Date: 2019/1/22
@@ -18,4 +20,13 @@ public interface TbItemCatDubboService {
      * @date: 2019/1/23 13:43
      */
     TbItemCat selById(long id);
+
+    /**
+      * 功能描述: 根据pid和status查询类目
+      * @param long pid, int status
+      * @return
+      * @auther: yt
+      * @date: 2019/2/12 11:22
+      */
+    List<TbItemCat> selByPidAndStatus(long pid, int status);
 }
