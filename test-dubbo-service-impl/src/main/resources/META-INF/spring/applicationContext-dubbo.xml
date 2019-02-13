@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
-        http://code.alibabatech.com/schema/dubbo 
+        http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- 应用程序名,admin管理界面,monitor看是哪个应用 -->
     <dubbo:application name="test-service-impl"/>
@@ -28,7 +28,11 @@
     <!-- 类目接口 -->
     <dubbo:service interface="com.mygeno.test.service.TbItemCatDubboService" ref="tbItemCatDubboService"></dubbo:service>
     <bean id="tbItemCatDubboService" class="com.mygeno.test.service.impl.TbItemCatDubboServiceImpl"></bean>
-    
+
+    <!-- 用户接口 -->
+    <dubbo:service interface="com.mygeno.test.service.TbUserDubboService" ref="tbUserDubboService"></dubbo:service>
+    <bean id="tbUserDubboService" class="com.mygeno.test.service.impl.TbUserDubboServiceImpl"></bean>
+
     <!-- 导入springmybatisxml -->
     <import resource="../../applicationContext-mybatis.xml"/>
 </beans>

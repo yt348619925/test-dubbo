@@ -24,4 +24,5 @@
     <!-- 应用接口 -->
     <dubbo:reference interface="com.mygeno.test.service.TbItemDubboService" id="tbItemDubboService"></dubbo:reference>
     <dubbo:reference interface="com.mygeno.test.service.TbItemCatDubboService" id="tbItemCatDubboService"></dubbo:reference>
+    <dubbo:reference interface="com.mygeno.test.service.TbUserDubboService" id="tbUserDubboService"></dubbo:reference>
 </beans>
