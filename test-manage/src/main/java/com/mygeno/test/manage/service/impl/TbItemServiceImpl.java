@@ -2,10 +2,7 @@ package com.mygeno.test.manage.service.impl;
 
 import com.mygeno.test.manage.pojo.TbChild;
 import com.mygeno.test.manage.service.TbItemService;
-import com.mygeno.test.pojo.EasyUIDatagrid;
-import com.mygeno.test.pojo.MygenoResult;
-import com.mygeno.test.pojo.TbItem;
-import com.mygeno.test.pojo.TbItemCat;
+import com.mygeno.test.pojo.*;
 import com.mygeno.test.service.TbItemCatDubboService;
 import com.mygeno.test.service.TbItemDubboService;
 import org.springframework.beans.BeanUtils;
@@ -13,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -76,6 +74,35 @@ public class TbItemServiceImpl implements TbItemService {
             result.setMsg("修改失败");
         } else {
             result.setStatus(200);
+        }
+        return result;
+    }
+
+    /**
+     * 功能描述: 新增商品,商品描述
+     * @param
+     * @return
+     * @auther: yt
+     * @date: 2019/2/23 17:02
+     */
+    public MygenoResult insItem(TbItem tbItem, String desc) {
+        Date date = new Date();
+        MygenoResult result = new MygenoResult();
+
+        //补充完需要的参数
+        tbItem.setStatus((byte)1);
+        tbItem.setCreated(date);
+        tbItem.setUpdated(date);
+
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setCreated(date);
+        tbItemDesc.setUpdated(date);
+
+        int index = tbItemDubboService.insItem(tbItem, tbItemDesc);
+        if(index > 0){
+            result.setStatus(200);
+        }else{
+            result.setMsg("新增失败");
         }
         return result;
     }

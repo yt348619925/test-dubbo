@@ -3,6 +3,7 @@ package com.mygeno.test.manage.controller;
 import com.mygeno.test.manage.service.TbItemService;
 import com.mygeno.test.pojo.EasyUIDatagrid;
 import com.mygeno.test.pojo.MygenoResult;
+import com.mygeno.test.pojo.TbItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,5 +77,11 @@ public class TbItemController {
     public MygenoResult reshelf(String ids){
         //商品状态，1-正常，2-下架，3-删除
         return tbItemService.updByIds(ids, (byte)1);
+    }
+
+    @ResponseBody
+    @RequestMapping("item/save")
+    public MygenoResult insItem(TbItem tbItem, String desc){
+        return tbItemService.insItem(tbItem, desc);
     }
 }

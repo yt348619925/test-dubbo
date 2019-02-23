@@ -1,6 +1,8 @@
 package com.mygeno.test.service;
 
 import com.mygeno.test.pojo.EasyUIDatagrid;
+import com.mygeno.test.pojo.TbItem;
+import com.mygeno.test.pojo.TbItemDesc;
 
 /**
  * @Auther: yt
@@ -29,4 +31,13 @@ public interface TbItemDubboService {
       * @date: 2019/1/23 15:31
       */
     int updByIds(long[] ids, Byte status);
+
+    /**
+      * 功能描述: 新增商品,商品描述
+      * @param
+      * @return
+      * @auther: yt
+      * @date: 2019/2/23 17:02
+      */
+    int insItem(TbItem tbItem, TbItemDesc desc);
 }

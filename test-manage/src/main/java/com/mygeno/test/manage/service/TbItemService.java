@@ -2,6 +2,7 @@ package com.mygeno.test.manage.service;
 
 import com.mygeno.test.pojo.EasyUIDatagrid;
 import com.mygeno.test.pojo.MygenoResult;
+import com.mygeno.test.pojo.TbItem;
 
 /**
  * @Auther: yt
@@ -32,4 +33,13 @@ public interface TbItemService {
      * @date: 2019/1/23 15:31
      */
     MygenoResult updByIds(String ids, Byte status);
+
+    /**
+     * 功能描述: 新增商品,商品描述
+     * @param
+     * @return
+     * @auther: yt
+     * @date: 2019/2/23 17:02
+     */
+    MygenoResult insItem(TbItem tbItem, String desc);
 }

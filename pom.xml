@@ -16,6 +16,7 @@
         <module>test-dubbo-service-impl</module>
         <module>test-manage</module>
         <module>test-passport</module>
+        <module>test-redis</module>
     </modules>
 
     <name>Maven</name>

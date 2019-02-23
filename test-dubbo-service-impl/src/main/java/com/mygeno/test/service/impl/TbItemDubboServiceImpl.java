@@ -3,11 +3,14 @@ package com.mygeno.test.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.mygeno.test.mapper.TbItemDescMapper;
 import com.mygeno.test.mapper.TbItemMapper;
 import com.mygeno.test.pojo.EasyUIDatagrid;
 import com.mygeno.test.pojo.TbItem;
+import com.mygeno.test.pojo.TbItemDesc;
 import com.mygeno.test.pojo.TbItemExample;
 import com.mygeno.test.service.TbItemDubboService;
+import com.mygeno.test.utils.IDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -23,6 +26,9 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
 
     @Autowired
     private TbItemMapper tbItemMapper;
+
+    @Autowired
+    private TbItemDescMapper tbItemDescMapper;
 
     /**
      * 功能描述: 分页数据展示
@@ -70,6 +76,26 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
             index += tbItemMapper.updateByPrimaryKeySelective(tbItem);
         }
         if(index == ids.length){
+            return 1;
+        }
+        return 0;
+    }
+
+    /**
+     * 功能描述: 新增商品,商品描述
+     * @param
+     * @return
+     * @auther: yt
+     * @date: 2019/2/23 17:02
+     */
+    public int insItem(TbItem tbItem, TbItemDesc desc) {
+        //自己创建ID,可减少高并发下的id取值错误问题
+        long id = IDUtils.genItemId();
+        tbItem.setId(id);
+        int index = tbItemMapper.insert(tbItem);
+        desc.setItemId(id);
+        index += tbItemDescMapper.insert(desc);
+        if(index == 2){
             return 1;
         }
         return 0;
